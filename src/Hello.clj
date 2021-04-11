@@ -1,6 +1,6 @@
 (ns Hello
   (:gen-class)
-  )
+  (:require [clojure.set :as set]))
 
 (defn hello-world "hell world program" [world] (println (format "Hello, %s" world)))
 
@@ -52,8 +52,8 @@
     ))
 
 (defn anonymousFun [] (
-                   (fn [x] (* x 2)) 3
-                   ))
+                       (fn [x] (* x 2)) 3
+                       ))
 
 (defn multiParamFunc [x y] (println (* 2 x y)))
 
@@ -87,9 +87,86 @@
 
 
 (defn writeFileAppend [] (with-open [w (clojure.java.io/writer "Example.txt" :append true)]
-                     (.write w (str "\r\nhello" "\r\nworld"
-                                    ))))
+                           (.write w (str "\r\nhello" "\r\nworld"
+                                          ))))
 
-(defn checkFileExist [] )
+(defn checkFileExist [] (println (.exists (clojure.java.io/file "Example.txt"))))
 
-(example15)
+(defn strFormat [] (format "Hello %s" "World"))
+
+(defn strCount [] (count "Hello World"))
+
+(defn strSubs [] (subs "Hello World" 0 3))
+
+(defn strCompare [] (compare "am" "ad"))
+
+(defn strLowerCase [] (clojure.string/lower-case "Hello World"))
+
+(defn strUpperCase [] (clojure.string/upper-case "hello world"))
+
+(defn strJoin [] (clojure.string/join "," [1, 2, 3, 4]))
+
+(defn strSplit [] (clojure.string/split "1,2,3,4" #","))
+
+(defn strSplitLine [] (clojure.string/split-lines "Hello\nWorld"))
+
+(defn strReverse [] (clojure.string/reverse "123456789"))
+
+(defn strReplace [] (clojure.string/replace "Hello World" #" " ","))
+
+(defn strTrim [] (clojure.string/trim "   H e l l o W o r l d  1"))
+
+(defn listSample [] (list 1 2 3 4))
+
+(defn listConcat [] (list* 1 [4, 5, 6]))
+
+(defn listFirst [] (first [-1, 7, 9]))
+
+(defn indexList [] (nth [1, 2, 3] 0))
+
+(defn listCons [] (cons 0 (list 1 2 3)))
+
+(defn listConj [] (conj [1, 2, 3] 4 5 6))
+
+(defn listRest [] (rest (list 2 3 4 5)))
+
+(defn listContains [] (contains? [1 2 3] 2))
+
+(defn setSample [] (set '(1 1 2 2 3 3 4 4)))
+
+(defn setSort [] (sorted-set 1 1 2 2 3 3 4 4))
+
+(defn indexSet []
+  (println (set '(1 2 3)))
+  (println (get (set '(1 2 3)) 1))
+  (println (get (set '(1 2 3)) 2))
+  (println (get (set '(1 2 3)) 3)))
+
+(defn setContains [] (contains? (set '(1 2 3)) 4))
+
+(defn setConj [] (conj (set '(1 2 3)) 4 5 6 1))
+
+(defn setDisj [] (disj (set '(1 2 3)) 2))
+
+(defn setUnion [] (set/union #{1 2} #{2 3} #{4 5}))
+
+(defn setDiff [] (set/difference #{1 2} #{2 3}))
+
+(defn setInter [] (set/intersection #{1 2} #{2 3}))
+
+(defn setSubset [] (println (set/subset? #{1 2} #{2 3})) (println (set/subset? #{1 2} #{1 2 3})))
+
+(defn setSuper [] (println (set/superset? #{1 2 3} #{1 2})) (println (set/superset? #{1 2 3} #{2 3 4})))
+
+(defn vectorOfDemo [] (vector-of :char 65 66 67))
+
+(defn indexVector [] (nth (vector 1 2 3) 0))
+
+(defn vectorConj [] (conj (vector 1 2 3) 5 6 7))
+
+(defn vectorPop [] (pop (vector 1 2 3)))
+
+(defn vectorSub [] (subvec (vector 1 2 3 4 5) 1 3))
+
+
+
