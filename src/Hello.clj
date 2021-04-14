@@ -168,5 +168,32 @@
 
 (defn vectorSub [] (subvec (vector 1 2 3 4 5) 1 3))
 
+(defn mapDemo [] (def simpleMap (hash-map "z" "1" "x" "2" "a" "3")) (println simpleMap))
+
+(defn sortMapDemo [] (def sortMap (sorted-map "z" "1" "x" "2" "a" "2")) (println sortMap))
+
+
+(def simpleMap (hash-map "a" "1" "b" "2" "c" "3"))
+
+(defn mapGet [] (get simpleMap "a"))
+
+(defn mapContains [] (contains? simpleMap "z"))
+
+(defn mapFind [] (find simpleMap "a"))
+
+(defn mapKeys [] (keys simpleMap))
+
+(defn mapValues [] (vals simpleMap))
+
+(defn mapRemoveKey [] (println (dissoc simpleMap "b")) (println simpleMap))
+
+(defn mapMerge [] (def map1 (hash-map "a" 1 "b" 2 "c" 3)) (def map2 (hash-map "a" 2 "b" 3 "d" 10 "z" 20)) (merge-with - map1 map2))
+
+(defn mapKeyRename [] (println (set/rename-keys simpleMap {"a" "newA" "b" "newB"})))
+
+
+(defn maoRevert [] (println (clojure.set/map-invert simpleMap)))
+
+(maoRevert)
 
 
